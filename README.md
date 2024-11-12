@@ -1,43 +1,58 @@
-﻿# Java-Programa2
-Parte 1: Crear el archivo Dockerfile
-En la misma carpeta, crea un archivo llamado Dockerfile con el siguiente contenido:
-
-# Usa una imagen base de Java
+# PRACTICE TASK - CONTAINERS AND SERVERLESS
+# PART 1: CREATE AT LEAST 5 DOCKERS PROJECTS – 5 PROGRAMMING LANGUAGES
+In this repository we create a file called Main.java which is a program in Java language using the Visual Studio Code source code editor
+# PART 2: ONCE THE FILE IS CREATED, CREATE A DOCKER IMAGE
+### STEPS:
+#### Step 1: Create a Dockerfile
+1. In the same folder as the project, create a file called Dockerfile (without extension).
+2. Add the following content to the Dockerfile:
+   
 FROM openjdk:17
 
-# Copia el archivo de código fuente en el contenedor
 COPY Main.java /app/Main.java
 
-# Cambia el directorio de trabajo al de la app
 WORKDIR /app
 
-# Compila el código Java
 RUN javac Main.java
 
-# Define el comando para ejecutar la app
 CMD ["java", "Main"]
 
-Parte 2: Construir la imagen Docker
-Abre la terminal en Visual Studio Code.
+#### Step 2: Build the Docker Image
+1. Open the terminal in Visual Studio Code or in the command line.
+2. Navigate to your project folder.
+3. Run the following command to build the Docker image:
+   
+docker build -t hola-mundo-java 
 
-Navega hasta la carpeta del proyecto y ejecuta el siguiente comando para construir la imagen Docker:
+#### Step 3: Run the Container
+1. Once the image has been built successfully, run the following command to start the container:
+   
+docker run hola-mundo-java 
 
-docker build -t hola-mundo-java .
+# PART 3: PUSHING CHANGES TO GITHUB AND DOCKER HUB
+## To push to github:
+Open a terminal in your project folder and run the following commands:
+1. Git init
+2. Git add .
+3. Git commit -m “feat:”
+4. Create a repository on Github
+5. Add the remote repository and upload the project with the following command lines:
+   
+git remote add origin <REPOSITORY_URL>
 
-Parte 3: Probar la imagen Docker
-Para asegurarte de que funciona correctamente, ejecuta el contenedor con:
+git push -u origin main
 
-docker run hola-mundo-java
-
-Parte 4: Publicar la imagen en Docker Hub
-Crea una cuenta en Docker Hub si no tienes una y asegúrate de iniciar sesión desde la terminal:
+## To upload the image to Docker Hub:
+1. Log in to Docker Hub from the terminal with the following command line:
+   
 docker login
 
-Etiqueta la imagen para Docker Hub. Cambia tu-usuario al nombre de tu cuenta en Docker Hub:
-docker tag hola-mundo-java tu-usuario/hola-mundo-java
-
-Sube la imagen a Docker Hub:
-docker push tu-usuario/hola-mundo-java
-
+3. Tag the image with the username and the name of the Docker Hub repository.
+   
+docker tag hola-mundo-java <username>/ hola-mundo-java
+   
+5. Push the image to Docker Hub:
+   
+docker push <username>/ hola-mundo-java
 
 
